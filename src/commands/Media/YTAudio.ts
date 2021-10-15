@@ -8,10 +8,10 @@ import { ISimplifiedMessage } from '../../typings'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'ytaudio',
+            command: 'yta',
             description: 'Downloads given YT Video and sends it as Audio',
             category: 'media',
-            aliases: ['yta'],
+            aliases: ['ytaudio'],
             usage: `${client.config.prefix}ytv [URL]`,
             baseXp: 20
         })
@@ -21,9 +21,9 @@ export default class Command extends BaseCommand {
         if (!M.urls.length) return void M.reply('🔎 Provide the URL of the YT video you want to download')
         const audio = new YT(M.urls[0], 'audio')
         if (!audio.validateURL()) return void M.reply(`⚓ Provide a Valid YT URL`)
-        M.reply('👾 sending...')
+        M.reply('火 Sending..⌛')
         M.reply(await audio.getBuffer(), MessageType.audio).catch((reason: Error) =>
-            M.reply(`❌ an error occurred, Reason: ${reason}`)
+            M.reply(`✖ An error occurred, Reason: ${reason}`)
         )
     }
 }
