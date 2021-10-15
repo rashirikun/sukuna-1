@@ -7,21 +7,21 @@ import axios from 'axios'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'fact',
-            description: 'sends a random fact for you.',
-            aliases: ['facts'],
-            category: 'fun',
-            usage: `${client.config.prefix}fact`,
-            baseXp: 30
+            command: 'animequote',
+            description: 'random anime quote.',
+            aliases: ['aq'],
+            category: 'anime',
+            usage: `${client.config.prefix}animequote`,
+            baseXp: 10
         })
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
         await axios
-            .get(`https://nekos.life/api/v2/fact`)
+            .get(`https://animechan.vercel.app/api/random`)
             .then((response) => {
                 // console.log(response);
-                const text = `📝 *Fact:* ${response.data.fact}`
+                const text = `⛩ *Anime:* ${response.data.anime}\n\n*🎎 Character:* ${response.data.character}\n\n*✏ Quote:* ${response.data.quote}`
                 M.reply(text)
             })
             .catch((err) => {

@@ -9,18 +9,20 @@ export default class Command extends BaseCommand {
             command: 'everyone',
             description: 'Tags all users in group chat',
             aliases: ['all', 'tagall'],
-            category: 'moderation',
+            category: 'general',
             usage: `${client.config.prefix}everyone`,
-            adminOnly: true
+            adminOnly: true,
+            baseXp: 20
         })
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
         return void (await M.reply(
-            `${M.groupMetadata?.subject || 'EVERYONE'}\n*[TAGS HIDDEN]*`,
+            `${M.groupMetadata?.subject || '*EVERYONE*'}\n*READ QUOTED MESSAGE*\n*[TAGGED MAGICALLY]*`,
             undefined,
             undefined,
             M.groupMetadata?.participants.map((user) => user.jid)
-        ).catch((reason: any) => M.reply(`✖ An error occurred, Reason: ${reason}`)))
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ).catch((reason: any) => M.reply(`an error occurred, Reason: ${reason}`)))
     }
 }
