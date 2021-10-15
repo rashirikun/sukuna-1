@@ -13,7 +13,8 @@
 
 </div><br/>
 <br/>
-
+## ❄ Shinobu 
+- To Deploy Shinobu Botto, clicl here➡️[Shinobu.md](https://github.com/well300/shinobu)
 ## ⚡ Chitoge
 - To Deploy Chitoge Botto, click here➡️[Chitoge.md](https://github.com/ShinNouzen/Chitoge)
 
