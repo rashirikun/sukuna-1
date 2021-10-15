@@ -11,7 +11,7 @@ export default class Command extends BaseCommand {
             command: 'sticker',
             aliases: ['s'],
             description: 'Converts images/videos into stickers',
-            category: 'media',
+            category: 'utils',
             usage: `${client.config.prefix}sticker [(as caption | tag)[video | image]]`,
             baseXp: 30
         })
@@ -41,10 +41,10 @@ export default class Command extends BaseCommand {
                 ? 100
                 : 50
         }
-
+        
         let quality = getQuality()
         if (quality > 100 || quality < 1) quality = 50
-
+        
         parsedArgs.flags.forEach((flag) => (parsedArgs.joined = parsedArgs.joined.replace(flag, '')))
         const getOptions = () => {
             const pack = parsedArgs.joined.split('|')
@@ -78,8 +78,8 @@ export default class Command extends BaseCommand {
             })()
             return {
                 categories,
-                pack: pack[1] || '👾 For You ',
-                author: pack[2] || 'By Monarch+Kaoi 👾',
+                pack: pack[1] || '平和 𝙗𝙚𝙡𝙤𝙣𝙜𝙨 𝙩𝙤',
+                author: pack[2] || '𝙠𝙖𝙬𝙖𝙞𝙞 𝙗𝙖𝙠𝙖 💕',
                 quality,
                 type: StickerTypes[
                     parsedArgs.flags.includes('--crop') || parsedArgs.flags.includes('--c')
@@ -93,7 +93,7 @@ export default class Command extends BaseCommand {
         parsedArgs.flags.forEach((flag) => (parsedArgs.joined = parsedArgs.joined.replace(flag, '')))
         if (!buffer) return void M.reply(`You didn't provide any Image/Video to convert`)
         const sticker = await new Sticker(buffer, getOptions()).build().catch(() => null)
-        if (!sticker) return void M.reply(`An Error Occurred While Converting`)
+        if (!sticker) return void M.reply(`✖ An error occurred while converting, please try again later.`)
         await M.reply(sticker, MessageType.sticker, Mimetype.webp)
     }
 }
