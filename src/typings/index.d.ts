@@ -37,6 +37,7 @@ export interface IGroup {
     nsfw: boolean
     safe: boolean
     mod: boolean
+    cmd: boolean
 }
 
 export interface IUser {
