@@ -16,19 +16,18 @@ export interface ICommand {
         usage?: string
         dm?: boolean
         baseXp?: number
-        modsOnly?: boolean
     }
 }
 
 export type TCategory =
-    | 'anime'
-    | 'bots'
-    | 'config'
-    | 'dev'
-    | 'fun'
-    | 'games'
-    | 'educative'
     | 'general'
-    | 'media'
     | 'moderation'
+    | 'misc'
+    | 'media'
+    | 'utils'
+    | 'dev'
     | 'category'
+    | 'fun'
+    | 'fun-2'
+    | 'weeb'
+    | 'nsfw'
